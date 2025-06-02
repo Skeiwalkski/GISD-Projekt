@@ -4,17 +4,17 @@
 ## Damit können GISD-Scores dann einwohnerproportional den PLZ-Gebieten zugeordnet werden.
 
 ## Gebietsstand ist analog zum Hauptskript der 31.12.2022
-## (PLZ sind von Stand 2024, aber die Änderungen sind vernachlässigbar)
+## (PLZ sind von Stand April 2024, aber die Änderungen sind vernachlässigbar)
 
 # Autor*in: Lola Omar Soliman (auf Basis von Lars Kroll)
-# Datum: 2025-01-16
+# Datum: 2025-01-29
 
 # Pakete laden
 library(tidyverse)  # Tidyverse Methoden
 library(sf)         # Geospatial Data Manipulation
 library(rmapshaper) # Simplify shapefiles
 
-# Skriptpfad als Arbeitspfad setzen
+# Skriptpfad als Arbeitspfad setzen (falls direkt im Skript gearbeitet wird)
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 # Dezimal-Zahlendarstellung erzwingen
@@ -33,8 +33,9 @@ shp_gem <- st_read("vg250-ew_12-31.gk3.shape.ebenen/vg250-ew_ebenen_1231/VG250_G
          geometry)
 
 # PLZ-Shapefile laden (Gebietsstand: April 2024, Projektion: UTM32)
-# (Quelle: GeoBasis-DE (leider nur auf Anfrage verfügbar))
-shp_plz <- st_read("PLZ (intern)/plz/de/PLZ.shp") %>% 
+# (Quelle: https://gdz.bkg.bund.de/index.php/default/postleitzahlgebiete-deutschland-plz.html)
+# Bitte beachten: Datensatz nur auf Anfrage verfügbar
+shp_plz <- st_read("Postleitzahlgebiete Deutschland (PLZ)_BKG_2024-04/plz/de/PLZ.shp") %>% 
   # Projektion an Gemeinde-Shapefile angleichen
   st_transform(st_crs(shp_gem)) %>%
   # PLZ auf optionale 4, 3, 2, 1 Ziffern auflösen
