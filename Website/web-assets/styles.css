@@ -1,0 +1,49 @@
+/* Hier sind Styling-Optionen vermerkt, die für alle HTML-Outputs gelten. */
+/* Tipp: Bootstrap-Standardwerte mit "!important" überschreiben */
+
+
+
+/***** Kosmetische Anpassungen *****/
+
+.main-container { /* Hauptcontainer */
+  max-width: 800px !important; /* Bisschen schmäler für bessere Lesbarkeit */
+  padding-top: 55px !important; /* Etwas Abstand zur Navigationsleiste */
+}
+
+pre { /* Codebox */
+  max-height: 400px; /* Maximale Codebox-Höhe*/
+  overflow-y: auto; /* Vertikal scrollbar wenn Box länger als max-height */
+}
+
+code { /* Text in der Codebox */
+  white-space: pre-wrap !important; /* Zeilenumbruch wenn Zeile zu lang für Codebox*/
+}
+
+
+
+/***** Bugfixes *****/
+
+.code-folding-btn {  /* Button zum Codebox zeigen/verstecken */
+  /* Bug in Bootstrap 5 schneidet Buttons rechts ab. */
+  margin-right: -24px !important; /* Bisschen zurück nach links schieben (Ursprungswert: -30px) */
+}
+
+thead { /* Tabellenkopf */
+  /* Aufgrund der Navigationsleiste müssen "sticky" Tabellenköpfe weiter runter*/
+  position: sticky; /* Beim Scrollen mitschweben */
+  top: 55px; /* Abstand von oben (Höhe der Navigationsleiste) */
+}
+
+h1, h2, h3, h4, h5, h6 { /* Überschriften */
+  /* Bootstrap 5 hat komische Margins und Paddings für Überschriften */
+  padding-top: 0 !important; /* Zurück auf 0 */
+  margin-top: 0 !important; /* Zurück auf 0 */
+}
+
+div.section.level2 { /* Standardkapitel */
+  margin-bottom: 5rem; /* Etwas Platz nach Unten */
+}
+
+div { /* Bootstrap macht Ränder in Tabellen wenn horizontal scrollbar */
+  border: 0 !important; /* Rand entfernen */
+}

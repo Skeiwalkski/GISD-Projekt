@@ -1,0 +1,17 @@
+|Indikator                         |Dimension   | Faktorladung| Anteil am Teilscore| Anteil am GISD|
+|:---------------------------------|:-----------|------------:|-------------------:|--------------:|
+|BeschaeftigtemitakadAbschluss_adj |Bildung     |         0.71|                34.3|           11.4|
+|BeschaeftigteohneAbschluss_adj    |Bildung     |        -0.71|                34.3|           11.4|
+|SchulabgaengerohneAbschluss_adj   |Bildung     |        -0.67|                31.4|           10.5|
+|Arbeitslosigkeit                  |Arbeitswelt |        -0.83|                39.5|           13.2|
+|Beschaeftigtenquote               |Arbeitswelt |         0.58|                19.5|            6.5|
+|Bruttoverdienst_ln                |Arbeitswelt |         0.84|                40.9|           13.6|
+|Einkommensteuer_ln                |Einkommen   |         0.92|                40.3|           13.4|
+|Haushaltseinkommen_ln             |Einkommen   |         0.92|                40.8|           13.6|
+|Schuldnerquote                    |Einkommen   |        -0.63|                18.9|            6.3|
+
+log. = logarithmiert  
+adj. = adjustiert
+
+Darstellung der Faktorladungen auf der ersten Hauptkomponente für die einzelnen Dimensionen. Eigenwerte der ersten Komponenten; η(Bildung) = 1.5: η(Beschäftigung) = 1.7; η(Einkommen) = 2.1. Die Eigenwerte der zweiten und dritten Komponenten liegen jeweils unter 0,85. Korrelationen zwischen den Scores der Teildimensionen für das Jahr 2021: r(Beschäftigung|Einkommen) = 0.69; r(Beschäftigung|Bildung) = 0.52; r(Einkommen|Bildung) = 0.75
+

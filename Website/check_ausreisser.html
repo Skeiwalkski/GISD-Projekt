@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="AutorIn: Lola Omar Soliman" />
+
+
+<title>GISD - Ausreißer in den Teildimensionen</title>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.3.1/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.9.0/transition.js"></script>
+<script src="site_libs/bs3compat-0.9.0/tabs.js"></script>
+<script src="site_libs/bs3compat-0.9.0/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+<link rel="shortcut icon" href="web-assets/RKI_Helix.ico"/>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">GISD</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="index.html">Start</a>
+</li>
+<li>
+  <a href="generate.html">Generierung</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Analysen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="check_faktorenanalyse.html">Faktorenanalyse</a>
+    </li>
+    <li>
+      <a href="check_ausreisser.html">Ausreißer in Teilscores</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://www.github.com/lolasoliman/gisd-docs">
+    <span class="fa fa-brands fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">GISD - Ausreißer in den Teildimensionen</h1>
+<h4 class="author">AutorIn: Lola Omar Soliman</h4>
+<h4 class="date">Zuletzt kompiliert am: 03. Juni 2025</h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#benötigte-pakete-und-dateipfadsetzung" id="toc-benötigte-pakete-und-dateipfadsetzung">0. Benötigte Pakete und Dateipfadsetzung</a></li>
+<li><a href="#i.-datenaufbereitung" id="toc-i.-datenaufbereitung">I. Datenaufbereitung</a></li>
+<li><a href="#ii.-erste-übersicht" id="toc-ii.-erste-übersicht">II. Erste Übersicht</a></li>
+<li><a href="#iii.-ausreißer-identifizieren" id="toc-iii.-ausreißer-identifizieren">III. Ausreißer identifizieren</a></li>
+<li><a href="#iv.-ausreißer-imputieren-und-scores-neu-normieren" id="toc-iv.-ausreißer-imputieren-und-scores-neu-normieren">IV. Ausreißer imputieren und Scores neu normieren</a></li>
+<li><a href="#v.-nachprüfen-nach-1.-imputation" id="toc-v.-nachprüfen-nach-1.-imputation">V. Nachprüfen nach 1. Imputation</a></li>
+<li><a href="#vi.-zweite-runde-selektion" id="toc-vi.-zweite-runde-selektion">VI. Zweite Runde Selektion</a></li>
+<li><a href="#vii.-zweite-runde-imputation" id="toc-vii.-zweite-runde-imputation">VII. Zweite Runde Imputation</a></li>
+<li><a href="#viii.-letzte-prüfung" id="toc-viii.-letzte-prüfung">VIII. Letzte Prüfung</a></li>
+</ul>
+</div>
+
+<p>Revision: 2025_v1</p>
+<p>Die Teildimensionen Beschäftigung und Einkommen weisen Ausreißer auf, die die Normierung teilweise erheblich verzerren. Zur Identifikation dieser Ausreißer wurden zunächst die Verläufe der Teildimensionen geplottet und visuell begutachtet. Auf dieser Grundlage erfolgte die Selektion der zu imputierenden Ausreißer. Die betroffenen Datenpunkte wurden anschließend mithilfe einer Mittelwertsimputation, basierend auf den Werten des Vor- und Nachjahres, ersetzt. Im Anschluss daran wurde eine erneute Normierung durchgeführt, um die Auswirkungen der Imputation auf die Gesamtergebnisse zu überprüfen. Da manche Gemeinden in zwei aufeinanderfolgenden Jahren Ausreißer zeigten, war in einer zweiten Runde eine weitere Imputation erforderlich. Abschließend erfolgten die finale Normierung sowie eine abschließende Prüfung der Daten. Der folgende Abschnitt legt jeden Schritt noch ein Mal genauer da, als im Hauptskript.</p>
+<div id="benötigte-pakete-und-dateipfadsetzung" class="section level2">
+<h2>0. Benötigte Pakete und Dateipfadsetzung</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Pakete laden</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># Tidyverse Methoden</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(scales)     <span class="co"># Skalierungsfunktionen</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># Skriptpfad als Arbeitspfad setzen</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getSourceEditorContext</span>()<span class="sc">$</span>path))</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># Neuestes Datenjahr und Revisionsnummer vermerken</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>latestyear <span class="ot">&lt;-</span> <span class="dv">2021</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>currentrevision <span class="ot">&lt;-</span> <span class="st">&quot;2025_v1&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co"># Datenpfad</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>dir_gisd <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;../Output/&quot;</span>,currentrevision,<span class="st">&quot;/Zwischendaten/&quot;</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#Dezimal-Zahlendarstellung erzwingen</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span></code></pre></div>
+</div>
+<div id="i.-datenaufbereitung" class="section level2">
+<h2>I. Datenaufbereitung</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Rohe Teilscores für Imputation</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>Results_raw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">paste0</span>(dir_gisd, <span class="st">&quot;Results_raw.rds&quot;</span>)) </span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Jahresnormierte Teilscores für Inspektion und Selektion</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>Scores_raw_long <span class="ot">&lt;-</span> Results_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="fu">select</span>(Gemeindekennziffer, Jahr, Bundesland,</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>         <span class="at">Gesamtscore =</span> GISD_Score,</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>         <span class="at">Arbeitswelt =</span> TS_Arbeitswelt_nrm,</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>         <span class="at">Einkommen =</span> TS_Einkommen_nrm,</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>         <span class="at">Bildung =</span> TS_Bildung_nrm) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  <span class="co"># Auf long reshapen</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Gesamtscore, Arbeitswelt, Einkommen, Bildung),</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Dimension&quot;</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  <span class="co"># Gemeinde-Jahr-String für Zuordnung nachher</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gkz_j =</span> <span class="fu">paste0</span>(Gemeindekennziffer,<span class="st">&quot;_&quot;</span>,<span class="fu">as.character</span>(Jahr)))</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>  </span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co"># Z (relativ zu Gemeindezeitreihe) aufbereiten</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>Z_ts <span class="ot">&lt;-</span> Results_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>  <span class="co"># Datenbasis für Z: zeitreihennormierte Teilscores</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>  <span class="fu">group_by</span>(Gemeindekennziffer) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Arbeitswelt =</span> <span class="fu">rescale</span>(TS_Arbeitswelt_raw),</span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a>         <span class="at">Bildung =</span> <span class="fu">rescale</span>(TS_Bildung_raw),</span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a>         <span class="at">Einkommen =</span> <span class="fu">rescale</span>(TS_Einkommen_raw),</span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a>         <span class="at">Gesamtscore =</span> <span class="fu">rescale</span>(GISD_Score)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a>  <span class="co"># Auf long reshapen</span></span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Arbeitswelt, Bildung, Einkommen, Gesamtscore),</span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Dimension&quot;</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a>  <span class="co"># Z berechnen</span></span>
+<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a>  <span class="fu">group_by</span>(Gemeindekennziffer, Dimension) <span class="sc">%&gt;%</span></span>
+<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> (Score <span class="sc">-</span> <span class="fu">mean</span>(Score)) <span class="sc">/</span> <span class="fu">sd</span>(Score)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a>  <span class="fu">select</span>(Gemeindekennziffer, Jahr,</span>
+<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a>         Dimension, z)</span>
+<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" tabindex="-1"></a><span class="co"># Z an den long Datensatz joinen</span></span>
+<span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a>Scores_raw_long <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb2-40"><a href="#cb2-40" tabindex="-1"></a>  <span class="fu">left_join</span>(Z_ts, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Gemeindekennziffer&quot;</span>, <span class="st">&quot;Jahr&quot;</span>, <span class="st">&quot;Dimension&quot;</span>))</span>
+<span id="cb2-41"><a href="#cb2-41" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" tabindex="-1"></a><span class="fu">rm</span>(Z_ts)</span></code></pre></div>
+</div>
+<div id="ii.-erste-übersicht" class="section level2">
+<h2>II. Erste Übersicht</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Plotübergreifende Komponente</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>plot_components <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1998</span>, <span class="dv">2021</span>, <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>                                           <span class="at">minor_breaks =</span> <span class="cn">NULL</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>                        <span class="fu">facet_wrap</span>(<span class="sc">~</span> Dimension, <span class="at">ncol =</span> <span class="dv">1</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>                                   <span class="at">strip.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>                                   <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>                        <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">override.aes=</span><span class="fu">list</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">linewidth=</span><span class="dv">2</span>))),</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>                        <span class="fu">theme_bw</span>())</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="do">################################################################################</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co"># Erste Übersicht: Teilscores (jahresweise normiert)</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="fu">ggplot</span>(Scores_raw_long,</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>           <span class="at">y =</span> Score,</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>           <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Teilscores des GISD vor Imputation&quot;</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Score (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/overview-1.png" width="2100" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/Scores.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="co">#        width = 210, height = 297, units = &quot;mm&quot;)</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Genauerer Blick auf Arbeitswelt und Einkommen</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">filter</span>(Scores_raw_long, Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>)),</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>           <span class="at">y =</span> Score,</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>           <span class="at">group =</span> Gemeindekennziffer,</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>           <span class="at">color =</span> Bundesland)) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Einkommens- und Arbeitswelt-Scores vor Imputation&quot;</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Score (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/overview-2.png" width="2100" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/AE-Scores.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="co">#        width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">################################################################################</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co"># Z-Tabelle generieren (jahresweise normiert)</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>z_table <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  <span class="fu">group_by</span>(Jahr, Dimension) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">zMin =</span> <span class="fu">min</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>            <span class="at">zMax =</span> <span class="fu">max</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>  <span class="fu">select</span>(Jahr, Dimension, zMin, zMax)</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co"># Z-Scores plotten (jahresweise normiert)</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Scores_raw_long, <span class="fu">aes</span>(<span class="at">x =</span> Jahr)) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_raw_long, <span class="fu">aes</span>(<span class="at">y=</span>z, <span class="at">group =</span> Gemeindekennziffer), <span class="at">linewidth =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> z_table, <span class="fu">aes</span>(<span class="at">y=</span>zMin), <span class="at">linewidth =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> z_table, <span class="fu">aes</span>(<span class="at">y=</span>zMax), <span class="at">linewidth =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Z-Werte der GISD-Teilscores (Teilscores zeitreihenweise normiert)&quot;</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Z (relativ zur Gemeindezeitreihe)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/overview-3.png" width="2100" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/Z_ynrm.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="co">#        width = 210, height = 297, units = &quot;mm&quot;)</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="do">################################################################################</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># Einkommens- und Arbeitswelt-Scores vereinzelt pro Bundesland</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>bundeslaender <span class="ot">=</span> <span class="fu">sort</span>(<span class="fu">unique</span>(Results_raw<span class="sc">$</span>Bundesland))</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>bl_colors <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">hue_pal</span>()(<span class="dv">16</span>) <span class="co"># Aus Regenbogen 16 Farben ziehen</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Farb-Iterator</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="cf">for</span>(bl <span class="cf">in</span> bundeslaender) {</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="co"># Absolutzahlen (jahresweise normiert)</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>    <span class="co"># Deutschland in grau</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_raw_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>                                                Bundesland <span class="sc">!=</span> bl),</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>                  <span class="at">y =</span> Score,</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>                  <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>    <span class="co"># Ziel-Bundesland in Farbe</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_raw_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>                                                Bundesland <span class="sc">==</span> bl), <span class="co"># Bundesland durchwechseln</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="fu">paste0</span>(bl_colors[i]), <span class="co"># Farbe durchwechseln</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>                  <span class="at">y =</span> Score,</span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>                  <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;Einkommens- und Arbeitswelt-Scores vor Imputation (Bundesland: &quot;</span>, bl, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Score (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a>    plot_components</span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a>    <span class="co"># #Plot speichern</span></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a>    <span class="co"># ggsave(paste0(&quot;Plots/Bundeslaender/Teilscores_&quot;,bl,&quot;.png&quot;), device = &quot;png&quot;,</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>    <span class="co">#        width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>  </span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>  <span class="co"># Z-Werte (zeitreihenweise normiert) (bessere Lesbarkeit als jahresnormiert)</span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> Scores_raw_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a>                                     Bundesland <span class="sc">==</span> bl),</span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a>             <span class="at">y =</span> z,</span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a>             <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a>              <span class="at">color =</span> <span class="fu">paste0</span>(bl_colors[i])) <span class="sc">+</span></span>
+<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;Z-Werte der zeitreihennormierten Teilscores vor Imputation (Bundesland: &quot;</span>, bl, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Z (relativ zur Gemeindezeitreihe)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-47"><a href="#cb6-47" tabindex="-1"></a>    plot_components</span>
+<span id="cb6-48"><a href="#cb6-48" tabindex="-1"></a>  </span>
+<span id="cb6-49"><a href="#cb6-49" tabindex="-1"></a>    <span class="co"># #Plot speichern</span></span>
+<span id="cb6-50"><a href="#cb6-50" tabindex="-1"></a>    <span class="co"># ggsave(paste0(&quot;Plots/Bundeslaender/Z/Z_&quot;,bl,&quot;.png&quot;), device = &quot;png&quot;,</span></span>
+<span id="cb6-51"><a href="#cb6-51" tabindex="-1"></a>    <span class="co">#        width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb6-52"><a href="#cb6-52" tabindex="-1"></a>    </span>
+<span id="cb6-53"><a href="#cb6-53" tabindex="-1"></a>  <span class="co"># Nächste Farbe</span></span>
+<span id="cb6-54"><a href="#cb6-54" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb6-55"><a href="#cb6-55" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="iii.-ausreißer-identifizieren" class="section level2">
+<h2>III. Ausreißer identifizieren</h2>
+<p>Es sind nur Einkommen und Arbeitswelt von Ausreißern betroffen, daher fällt die Bildungsdimension raus.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">## Arbeitswelt</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># Optische Begutachtung zeigte folgende Ausreißer auf:</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#   - Baden-Württemberg in 2002</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#   - Mecklenburg-Vorpommern in 2002, 2003, 2011, 2013-2016</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#   - Niedersachsen 2002, 2004</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#   - Rheinland-Pfalz in 2017 sowie Anomalien in 2002</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#   - Sachsen in 2013, 2014</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#   - Sachsen-Anhalt in 2013</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#   - Schleswig-Holstein in 2002, 2018</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#   - Thüringen in 2002, 2005, 2006, 2012, 2018, 2019</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>aus.arb.bw <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Baden-Württemberg&quot;</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2002</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.5</span>))</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a>aus.arb.mv <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Mecklenburg-Vorpommern&quot;</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2002</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.85</span>) <span class="sc">|</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a>          (Jahr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2011</span>, <span class="dv">2013</span>, <span class="dv">2015</span>, <span class="dv">2016</span>) <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.95</span>))</span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>aus.arb.ni <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Niedersachsen&quot;</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a>          (Jahr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2002</span>, <span class="dv">2004</span>) <span class="sc">&amp;</span> (z <span class="sc">&gt;</span> <span class="dv">2</span> <span class="sc">|</span> z <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span>)))</span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a>aus.arb.nw <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Nordrhein-Westfalen&quot;</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2016</span> <span class="sc">&amp;</span> z <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">1.5</span>))</span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a>aus.arb.rp <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Rheinland-Pfalz&quot;</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2002</span> <span class="sc">&amp;</span> z <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">|</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2017</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.95</span>))</span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a>aus.arb.sn <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Sachsen&quot;</span>,</span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2013</span> <span class="sc">&amp;</span> z <span class="sc">&gt;</span> <span class="dv">1</span>))</span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a>aus.arb.st <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Sachsen-Anhalt&quot;</span>,</span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2013</span> <span class="sc">&amp;</span> z <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.95</span>))</span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a>aus.arb.sh <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Schleswig-Holstein&quot;</span>,</span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2002</span> <span class="sc">&amp;</span> z <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">|</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2018</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.9</span>))</span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a>aus.arb.th <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Thüringen&quot;</span>,</span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2002</span> <span class="sc">&amp;</span> z <span class="sc">&gt;=</span> <span class="dv">2</span>) <span class="sc">|</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2005</span> <span class="sc">&amp;</span> z <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">|</span></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2018</span> <span class="sc">&amp;</span> Score <span class="sc">&lt;</span> <span class="fl">0.1</span>) <span class="sc">|</span></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2019</span> <span class="sc">&amp;</span> z <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a>ausreisser_a <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(aus.arb.bw,</span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a>                          aus.arb.mv,</span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a>                          aus.arb.ni,</span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a>                          aus.arb.nw,</span>
+<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a>                          aus.arb.rp,</span>
+<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a>                          aus.arb.sn,</span>
+<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a>                          aus.arb.st,</span>
+<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a>                          aus.arb.sh,</span>
+<span id="cb7-72"><a href="#cb7-72" tabindex="-1"></a>                          aus.arb.th)</span>
+<span id="cb7-73"><a href="#cb7-73" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" tabindex="-1"></a><span class="do">## Einkommen</span></span>
+<span id="cb7-75"><a href="#cb7-75" tabindex="-1"></a><span class="co"># Optische Begutachtung zeigte folgende Ausreißer auf:</span></span>
+<span id="cb7-76"><a href="#cb7-76" tabindex="-1"></a><span class="co">#   - Baden-Württemberg in 2001, 2004, 2015 (sowie 2016 und 2017 aber nicht stark)</span></span>
+<span id="cb7-77"><a href="#cb7-77" tabindex="-1"></a><span class="co">#   - Bayern in 2004, 2012, sowie starke Anomalien in 2017</span></span>
+<span id="cb7-78"><a href="#cb7-78" tabindex="-1"></a><span class="co">#   - Brandenburg in 2010</span></span>
+<span id="cb7-79"><a href="#cb7-79" tabindex="-1"></a><span class="co">#   - Niedersachsen in 2005, 2007, 2009, 2012</span></span>
+<span id="cb7-80"><a href="#cb7-80" tabindex="-1"></a><span class="co">#   - Nordrhein-Westfalen in 2004, 2011, 2017 (aber nicht stark)</span></span>
+<span id="cb7-81"><a href="#cb7-81" tabindex="-1"></a></span>
+<span id="cb7-82"><a href="#cb7-82" tabindex="-1"></a>aus.eink.bw <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-83"><a href="#cb7-83" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb7-84"><a href="#cb7-84" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Baden-Württemberg&quot;</span>,</span>
+<span id="cb7-85"><a href="#cb7-85" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2004</span> <span class="sc">&amp;</span> z <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">|</span></span>
+<span id="cb7-86"><a href="#cb7-86" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">&amp;</span> (z <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">1.5</span> <span class="sc">|</span> z <span class="sc">&gt;</span> <span class="fl">0.8</span>)) <span class="sc">|</span></span>
+<span id="cb7-87"><a href="#cb7-87" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2016</span> <span class="sc">&amp;</span> Score <span class="sc">&lt;</span> <span class="fl">0.2</span>))</span>
+<span id="cb7-88"><a href="#cb7-88" tabindex="-1"></a></span>
+<span id="cb7-89"><a href="#cb7-89" tabindex="-1"></a>aus.eink.by <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-90"><a href="#cb7-90" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb7-91"><a href="#cb7-91" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Bayern&quot;</span>,</span>
+<span id="cb7-92"><a href="#cb7-92" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2004</span> <span class="sc">&amp;</span> (z <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">|</span> z <span class="sc">&gt;</span> <span class="dv">4</span>)) <span class="sc">|</span></span>
+<span id="cb7-93"><a href="#cb7-93" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2012</span> <span class="sc">&amp;</span> (z <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">|</span></span>
+<span id="cb7-94"><a href="#cb7-94" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2017</span>))</span>
+<span id="cb7-95"><a href="#cb7-95" tabindex="-1"></a></span>
+<span id="cb7-96"><a href="#cb7-96" tabindex="-1"></a>aus.eink.bb <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-97"><a href="#cb7-97" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb7-98"><a href="#cb7-98" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Brandenburg&quot;</span>,</span>
+<span id="cb7-99"><a href="#cb7-99" tabindex="-1"></a>         z <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb7-100"><a href="#cb7-100" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" tabindex="-1"></a>aus.eink.ni <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-102"><a href="#cb7-102" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb7-103"><a href="#cb7-103" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Niedersachsen&quot;</span>,</span>
+<span id="cb7-104"><a href="#cb7-104" tabindex="-1"></a>         Jahr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2005</span>, <span class="dv">2007</span>, <span class="dv">2009</span>, <span class="dv">2012</span>),</span>
+<span id="cb7-105"><a href="#cb7-105" tabindex="-1"></a>         Score <span class="sc">&gt;</span> <span class="fl">0.75</span>)</span>
+<span id="cb7-106"><a href="#cb7-106" tabindex="-1"></a></span>
+<span id="cb7-107"><a href="#cb7-107" tabindex="-1"></a>aus.eink.nw <span class="ot">&lt;-</span> Scores_raw_long <span class="sc">%&gt;%</span> </span>
+<span id="cb7-108"><a href="#cb7-108" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb7-109"><a href="#cb7-109" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Nordrhein-Westfalen&quot;</span>,</span>
+<span id="cb7-110"><a href="#cb7-110" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2004</span> <span class="sc">&amp;</span> z <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">2</span>) <span class="sc">|</span></span>
+<span id="cb7-111"><a href="#cb7-111" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2011</span> <span class="sc">&amp;</span> z <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">|</span></span>
+<span id="cb7-112"><a href="#cb7-112" tabindex="-1"></a>          (Jahr <span class="sc">&lt;=</span> <span class="dv">2017</span> <span class="sc">&amp;</span> z <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fl">1.5</span>))</span>
+<span id="cb7-113"><a href="#cb7-113" tabindex="-1"></a></span>
+<span id="cb7-114"><a href="#cb7-114" tabindex="-1"></a>ausreisser_e <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(aus.eink.bw,</span>
+<span id="cb7-115"><a href="#cb7-115" tabindex="-1"></a>                          aus.eink.by,</span>
+<span id="cb7-116"><a href="#cb7-116" tabindex="-1"></a>                          aus.eink.bb,</span>
+<span id="cb7-117"><a href="#cb7-117" tabindex="-1"></a>                          aus.eink.ni,</span>
+<span id="cb7-118"><a href="#cb7-118" tabindex="-1"></a>                          aus.eink.nw)</span>
+<span id="cb7-119"><a href="#cb7-119" tabindex="-1"></a></span>
+<span id="cb7-120"><a href="#cb7-120" tabindex="-1"></a><span class="fu">rm</span>(aus.arb.bw,</span>
+<span id="cb7-121"><a href="#cb7-121" tabindex="-1"></a>   aus.arb.mv,</span>
+<span id="cb7-122"><a href="#cb7-122" tabindex="-1"></a>   aus.arb.ni,</span>
+<span id="cb7-123"><a href="#cb7-123" tabindex="-1"></a>   aus.arb.nw,</span>
+<span id="cb7-124"><a href="#cb7-124" tabindex="-1"></a>   aus.arb.rp,</span>
+<span id="cb7-125"><a href="#cb7-125" tabindex="-1"></a>   aus.arb.sn,</span>
+<span id="cb7-126"><a href="#cb7-126" tabindex="-1"></a>   aus.arb.st,</span>
+<span id="cb7-127"><a href="#cb7-127" tabindex="-1"></a>   aus.arb.sh,</span>
+<span id="cb7-128"><a href="#cb7-128" tabindex="-1"></a>   aus.arb.th,</span>
+<span id="cb7-129"><a href="#cb7-129" tabindex="-1"></a>   aus.eink.bw,</span>
+<span id="cb7-130"><a href="#cb7-130" tabindex="-1"></a>   aus.eink.by,</span>
+<span id="cb7-131"><a href="#cb7-131" tabindex="-1"></a>   aus.eink.bb,</span>
+<span id="cb7-132"><a href="#cb7-132" tabindex="-1"></a>   aus.eink.ni,</span>
+<span id="cb7-133"><a href="#cb7-133" tabindex="-1"></a>   aus.eink.nw)</span></code></pre></div>
+</div>
+<div id="iv.-ausreißer-imputieren-und-scores-neu-normieren" class="section level2">
+<h2>IV. Ausreißer imputieren und Scores neu normieren</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Erste Runde Imputation</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>Results_imp1 <span class="ot">&lt;-</span> Results_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="co"># Gemeinde-Jahr-String für Zuordnung</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gkz_j =</span> <span class="fu">paste0</span>(Gemeindekennziffer,<span class="st">&quot;_&quot;</span>,<span class="fu">as.character</span>(Jahr))) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="co"># Interpolieren (Reminder: Es geht um die rohen Scores)</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="fu">group_by</span>(Gemeindekennziffer) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TS_Arbeitswelt_imp1 =</span> <span class="fu">if_else</span>(gkz_j <span class="sc">%in%</span> ausreisser_a<span class="sc">$</span>gkz_j,</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>                                      (<span class="fu">lag</span>(TS_Arbeitswelt_raw) <span class="sc">+</span> <span class="fu">lead</span>(TS_Arbeitswelt_raw)) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>                                      TS_Arbeitswelt_raw),</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>         <span class="at">TS_Einkommen_imp1 =</span> <span class="fu">if_else</span>(gkz_j <span class="sc">%in%</span> ausreisser_e<span class="sc">$</span>gkz_j,</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>                                    (<span class="fu">lag</span>(TS_Einkommen_raw) <span class="sc">+</span> <span class="fu">lead</span>(TS_Einkommen_raw)) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>                                    TS_Einkommen_raw),</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>         <span class="at">Imputed =</span> <span class="fu">if_else</span>(gkz_j <span class="sc">%in%</span> <span class="fu">c</span>(ausreisser_e<span class="sc">$</span>gkz_j, ausreisser_a<span class="sc">$</span>gkz_j),</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>                           <span class="dv">1</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>                           <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  <span class="co"># Neu imputierte Teilscores jahresweise normieren</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="fu">group_by</span>(Jahr) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TS_Arbeitswelt_nrm =</span> <span class="fu">rescale</span>(TS_Arbeitswelt_imp1),</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>         <span class="at">TS_Einkommen_nrm =</span> <span class="fu">rescale</span>(TS_Einkommen_imp1),</span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>         <span class="co"># Zu Gesamtscore zusammensetzen und erneut normieren</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>         <span class="at">GISD_Score =</span> <span class="fu">rescale</span>(TS_Arbeitswelt_nrm <span class="sc">+</span> TS_Einkommen_nrm <span class="sc">+</span> TS_Bildung_nrm)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co"># Jahresnormierte Teilscores für Inspektion und Selektion  </span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a>Scores_imp1_long <span class="ot">&lt;-</span> Results_imp1 <span class="sc">%&gt;%</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>  <span class="fu">select</span>(Gemeindekennziffer, Jahr, Bundesland,</span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a>         <span class="at">Gesamtscore =</span> GISD_Score,</span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a>         <span class="at">Arbeitswelt =</span> TS_Arbeitswelt_nrm,</span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a>         <span class="at">Einkommen =</span> TS_Einkommen_nrm,</span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a>         <span class="at">Bildung =</span> TS_Bildung_nrm,</span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a>         <span class="fu">contains</span>(<span class="st">&quot;TS_&quot;</span>),</span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a>         gkz_j) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a>  <span class="co"># Auf long reshapen</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Gesamtscore, Arbeitswelt, Einkommen, Bildung),</span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Dimension&quot;</span>,</span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co"># Z (relativ zu Gemeindezeitreihe) aufbereiten</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a>Z_ts <span class="ot">&lt;-</span> Results_imp1 <span class="sc">%&gt;%</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a>  <span class="fu">group_by</span>(Gemeindekennziffer) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Arbeitswelt =</span> <span class="fu">rescale</span>(TS_Arbeitswelt_imp1),</span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a>         <span class="at">Einkommen =</span> <span class="fu">rescale</span>(TS_Einkommen_imp1)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a>  <span class="co"># Auf long reshapen</span></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Arbeitswelt, Einkommen),</span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Dimension&quot;</span>,</span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a>  <span class="co"># Z berechnen</span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a>  <span class="fu">group_by</span>(Gemeindekennziffer, Dimension) <span class="sc">%&gt;%</span></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> (Score <span class="sc">-</span> <span class="fu">mean</span>(Score)) <span class="sc">/</span> <span class="fu">sd</span>(Score)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a>  <span class="fu">select</span>(Gemeindekennziffer, Jahr,</span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a>         Dimension, z)</span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="co"># Z an den long Datensatz joinen</span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a>Scores_imp1_long <span class="ot">&lt;-</span> Scores_imp1_long <span class="sc">%&gt;%</span> </span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a>  <span class="fu">left_join</span>(Z_ts, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Gemeindekennziffer&quot;</span>, <span class="st">&quot;Jahr&quot;</span>, <span class="st">&quot;Dimension&quot;</span>))</span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="fu">rm</span>(Z_ts)</span></code></pre></div>
+</div>
+<div id="v.-nachprüfen-nach-1.-imputation" class="section level2">
+<h2>V. Nachprüfen nach 1. Imputation</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Teilscores (jahresweise normiert)</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">ggplot</span>(Scores_imp1_long,</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>           <span class="at">y =</span> Score,</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>           <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Teilscores des GISD nach 1. Imputation&quot;</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Scores (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/inspect-1.png" width="2100" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/Scores_imp1.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="co">#      width = 210, height = 297, units = &quot;mm&quot;)</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># Genauerer Blick auf Arbeitswelt und Einkommen</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">ggplot</span>(Scores_imp1_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                                             <span class="st">&quot;Arbeitswelt&quot;</span>)),</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>           <span class="at">y =</span> Score,</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>           <span class="at">group =</span> Gemeindekennziffer,</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>           <span class="at">color =</span> Bundesland)) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Einkommens- und Arbeitswelt-Scores nach 1. Imputation&quot;</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Scores (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/inspect-2.png" width="2100" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/AE-Scores_imp1.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="co">#      width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="do">################################################################################</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co"># Einkommens- und Arbeitswelt-Scores pro Bundesland (zeitreihenweise normiert)</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="cf">for</span>(bl <span class="cf">in</span> bundeslaender) {</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="co"># Absolutzahlen (jahresweise normiert)</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>    <span class="co"># Deutschland in grau</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_imp1_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>                                                 Bundesland <span class="sc">!=</span> bl),</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>                  <span class="at">y =</span> Score,</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>                  <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>    <span class="co"># Ziel-Bundesland in Farbe</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_imp1_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a>                                                 Bundesland <span class="sc">==</span> bl), <span class="co"># Bundesland durchwechseln</span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="fu">paste0</span>(bl_colors[i]), <span class="co"># Farbe durchwechseln</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a>                  <span class="at">y =</span> Score,</span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a>                  <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;Einkommens- und Arbeitswelt-Scores nach 1. Imputation (Bundesland: &quot;</span>, bl, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Score (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a>    plot_components</span>
+<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a>    <span class="co"># #Plot speichern</span></span>
+<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a>    <span class="co"># ggsave(paste0(&quot;Plots/Bundeslaender/Teilscores_&quot;,bl,&quot;_imp1.png&quot;), device = &quot;png&quot;,</span></span>
+<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a>    <span class="co">#        width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a>    </span>
+<span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a>  <span class="co"># Z-Werte (zeitreihenweise normiert)</span></span>
+<span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> Scores_imp1_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a>                                            Bundesland <span class="sc">==</span> bl),</span>
+<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a>             <span class="at">y =</span> z,</span>
+<span id="cb11-40"><a href="#cb11-40" tabindex="-1"></a>             <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb11-41"><a href="#cb11-41" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb11-42"><a href="#cb11-42" tabindex="-1"></a>              <span class="at">color =</span> <span class="fu">paste0</span>(bl_colors[i])) <span class="sc">+</span></span>
+<span id="cb11-43"><a href="#cb11-43" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;Z-Werte der zeitreihennormierten Teilscores nach 1. Imputation (Bundesland: &quot;</span>, bl, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb11-44"><a href="#cb11-44" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Z (relativ zur Gemeindezeitreihe)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-45"><a href="#cb11-45" tabindex="-1"></a>    plot_components</span>
+<span id="cb11-46"><a href="#cb11-46" tabindex="-1"></a>  </span>
+<span id="cb11-47"><a href="#cb11-47" tabindex="-1"></a>    <span class="co"># #Plot speichern</span></span>
+<span id="cb11-48"><a href="#cb11-48" tabindex="-1"></a>    <span class="co"># ggsave(paste0(&quot;Plots/Bundeslaender/Z/Z_&quot;,bl,&quot;_imp1.png&quot;), device = &quot;png&quot;,</span></span>
+<span id="cb11-49"><a href="#cb11-49" tabindex="-1"></a>    <span class="co">#        width = 297, height = 210, units = &quot;mm&quot;)  </span></span>
+<span id="cb11-50"><a href="#cb11-50" tabindex="-1"></a>    </span>
+<span id="cb11-51"><a href="#cb11-51" tabindex="-1"></a>  <span class="co"># Nächste Farbe</span></span>
+<span id="cb11-52"><a href="#cb11-52" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb11-53"><a href="#cb11-53" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="vi.-zweite-runde-selektion" class="section level2">
+<h2>VI. Zweite Runde Selektion</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="do">## Arbeitswelt</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>aus.arb.bw <span class="ot">&lt;-</span> Scores_imp1_long <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Baden-Württemberg&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2007</span> <span class="sc">&amp;</span> z <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>aus.arb.mv <span class="ot">&lt;-</span> Scores_imp1_long <span class="sc">%&gt;%</span> </span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Mecklenburg-Vorpommern&quot;</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.95</span>))</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>aus.arb.sn <span class="ot">&lt;-</span> Scores_imp1_long <span class="sc">%&gt;%</span> </span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Sachsen&quot;</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> Score <span class="sc">&gt;</span> <span class="fl">0.9</span>))</span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>aus.arb.th <span class="ot">&lt;-</span> Scores_imp1_long <span class="sc">%&gt;%</span> </span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Arbeitswelt&quot;</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Thüringen&quot;</span>,</span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2006</span> <span class="sc">&amp;</span> Score <span class="sc">&lt;</span> <span class="fl">0.25</span>))</span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co"># Bundesländer zusammenlegen</span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>ausreisser_a_imp1 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(aus.arb.bw,</span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a>                               aus.arb.mv,</span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a>                               aus.arb.sn,</span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a>                               aus.arb.th)</span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a><span class="do">## Einkommen</span></span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>ausreisser_e_imp1 <span class="ot">&lt;-</span> Scores_imp1_long <span class="sc">%&gt;%</span> </span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a>  <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a>         Bundesland <span class="sc">==</span> <span class="st">&quot;Baden-Württemberg&quot;</span>,</span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">&amp;</span> z <span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">0.2</span>) <span class="sc">|</span></span>
+<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a>          (Jahr <span class="sc">==</span> <span class="dv">2017</span> <span class="sc">&amp;</span> Score <span class="sc">&lt;</span> <span class="fl">0.2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a>  <span class="co"># Gemeinde-Jahr-String für Zuordnung erstellen</span></span>
+<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gkz_j =</span> <span class="fu">paste0</span>(Gemeindekennziffer,<span class="st">&quot;_&quot;</span>,<span class="fu">as.character</span>(Jahr)))</span>
+<span id="cb12-36"><a href="#cb12-36" tabindex="-1"></a></span>
+<span id="cb12-37"><a href="#cb12-37" tabindex="-1"></a><span class="fu">rm</span>(aus.arb.bw,</span>
+<span id="cb12-38"><a href="#cb12-38" tabindex="-1"></a>   aus.arb.mv,</span>
+<span id="cb12-39"><a href="#cb12-39" tabindex="-1"></a>   aus.arb.sn,</span>
+<span id="cb12-40"><a href="#cb12-40" tabindex="-1"></a>   aus.arb.th)</span></code></pre></div>
+</div>
+<div id="vii.-zweite-runde-imputation" class="section level2">
+<h2>VII. Zweite Runde Imputation</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>Results_imp2 <span class="ot">&lt;-</span> Results_imp1 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="co"># Interpolieren</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Gemeindekennziffer) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TS_Arbeitswelt_imp2 =</span> <span class="fu">if_else</span>(gkz_j <span class="sc">%in%</span> ausreisser_a_imp1<span class="sc">$</span>gkz_j,</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>                                      (<span class="fu">lag</span>(TS_Arbeitswelt_imp1) <span class="sc">+</span> <span class="fu">lead</span>(TS_Arbeitswelt_imp1)) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>                                      TS_Arbeitswelt_imp1),</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>         <span class="at">TS_Einkommen_imp2 =</span> <span class="fu">if_else</span>(gkz_j <span class="sc">%in%</span> ausreisser_e_imp1<span class="sc">$</span>gkz_j,</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>                                    (<span class="fu">lag</span>(TS_Einkommen_imp1) <span class="sc">+</span> <span class="fu">lead</span>(TS_Einkommen_imp1)) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>                                    TS_Einkommen_imp1),</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>         <span class="at">Imputed =</span> <span class="fu">if_else</span>(gkz_j <span class="sc">%in%</span> <span class="fu">c</span>(ausreisser_e_imp1<span class="sc">$</span>gkz_j, ausreisser_a_imp1<span class="sc">$</span>gkz_j),</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>                           <span class="dv">2</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>                           Imputed)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>  <span class="co"># Teilscores jahresweise normieren</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>  <span class="fu">group_by</span>(Jahr) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TS_Arbeitswelt_nrm =</span> <span class="fu">rescale</span>(TS_Arbeitswelt_imp2),</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>         <span class="at">TS_Einkommen_nrm =</span> <span class="fu">rescale</span>(TS_Einkommen_imp2),</span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a>         <span class="co"># Zu Gesamtscore zusammensetzen und erneut normieren</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a>         <span class="at">GISD_Score =</span> <span class="fu">rescale</span>(TS_Arbeitswelt_nrm <span class="sc">+</span> TS_Einkommen_nrm <span class="sc">+</span> TS_Bildung_nrm)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a>Scores_imp2_long <span class="ot">&lt;-</span> Results_imp2 <span class="sc">%&gt;%</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a>  <span class="fu">select</span>(Gemeindekennziffer, Jahr, Bundesland,</span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a>         <span class="at">Gesamtscore =</span> GISD_Score,</span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a>         <span class="at">Arbeitswelt =</span> TS_Arbeitswelt_nrm,</span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a>         <span class="at">Einkommen =</span> TS_Einkommen_nrm,</span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a>         <span class="at">Bildung =</span> TS_Bildung_nrm,</span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a>         <span class="fu">contains</span>(<span class="st">&quot;TS_&quot;</span>),</span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a>         gkz_j) <span class="sc">%&gt;%</span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a>  <span class="co"># Auf long reshapen</span></span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Gesamtscore, Arbeitswelt, Einkommen, Bildung),</span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Dimension&quot;</span>,</span>
+<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>)</span></code></pre></div>
+</div>
+<div id="viii.-letzte-prüfung" class="section level2">
+<h2>VIII. Letzte Prüfung</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Teilscores (jahresweise normiert)</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">ggplot</span>(Scores_imp2_long,</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>           <span class="at">y =</span> Score,</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>           <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linewidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Teilscores des GISD nach 2. Imputation&quot;</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Scores (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/inspect2-1.png" width="2100" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/Scores_imp2.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="co">#      width = 210, height = 297, units = &quot;mm&quot;)</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># Genauerer Blick auf Arbeitswelt und Einkommen</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="fu">ggplot</span>(Scores_imp2_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>                                             <span class="st">&quot;Arbeitswelt&quot;</span>)),</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>           <span class="at">y =</span> Score,</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>           <span class="at">group =</span> Gemeindekennziffer,</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>           <span class="at">color =</span> Bundesland)) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Einkommens- und Arbeitswelt-Scores nach 2. Imputation&quot;</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Scores (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>  plot_components</span></code></pre></div>
+<p><img src="check_ausreisser_files/figure-html/inspect2-2.png" width="2100" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>  <span class="co"># ggsave(&quot;Plots/AE-Scores_imp2.png&quot;, device = &quot;png&quot;,</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="co">#      width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="do">################################################################################</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co"># Einkommens- und Arbeitswelt-Scores pro Bundesland (zeitreihenweise normiert)</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="cf">for</span>(bl <span class="cf">in</span> bundeslaender) {</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>  <span class="co"># Absolutzahlen (jahresweise normiert)</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>    <span class="co"># Deutschland in grau</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_imp2_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>                                                 Bundesland <span class="sc">!=</span> bl),</span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">linewidth =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a>                  <span class="at">y =</span> Score,</span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>                  <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>    <span class="co"># Ziel-Bundesland in Farbe</span></span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> Scores_imp2_long <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dimension <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Einkommen&quot;</span>, <span class="st">&quot;Arbeitswelt&quot;</span>),</span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>                                                 Bundesland <span class="sc">==</span> bl), <span class="co"># Bundesland durchwechseln</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="fu">paste0</span>(bl_colors[i]), <span class="co"># Farbe durchwechseln</span></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> Jahr,</span>
+<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a>                  <span class="at">y =</span> Score,</span>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a>                  <span class="at">group =</span> Gemeindekennziffer)) <span class="sc">+</span></span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;Einkommens- und Arbeitswelt-Scores nach 2. Imputation (Bundesland: &quot;</span>, bl, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Score (jahresweise normiert)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb16-29"><a href="#cb16-29" tabindex="-1"></a>    plot_components</span>
+<span id="cb16-30"><a href="#cb16-30" tabindex="-1"></a></span>
+<span id="cb16-31"><a href="#cb16-31" tabindex="-1"></a>    <span class="co"># #Plot speichern</span></span>
+<span id="cb16-32"><a href="#cb16-32" tabindex="-1"></a>    <span class="co"># ggsave(paste0(&quot;Plots/Bundeslaender/Teilscores_&quot;,bl,&quot;_imp2.png&quot;), device = &quot;png&quot;,</span></span>
+<span id="cb16-33"><a href="#cb16-33" tabindex="-1"></a>    <span class="co">#        width = 297, height = 210, units = &quot;mm&quot;)</span></span>
+<span id="cb16-34"><a href="#cb16-34" tabindex="-1"></a>    </span>
+<span id="cb16-35"><a href="#cb16-35" tabindex="-1"></a>  <span class="co"># Nächste Farbe</span></span>
+<span id="cb16-36"><a href="#cb16-36" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb16-37"><a href="#cb16-37" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
