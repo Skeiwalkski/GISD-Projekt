@@ -1,3 +1,4 @@
 *.Rmd linguist-detectable=TRUE
 *.Rmd linguist-language=R
-*.html linguist-generated
+
+/Website/* linguist-generated
