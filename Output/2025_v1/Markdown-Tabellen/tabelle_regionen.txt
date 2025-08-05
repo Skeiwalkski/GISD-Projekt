@@ -1,0 +1,9 @@
+|Ebene                                              | Anzahl (Stand 31.12.2022)|
+|:--------------------------------------------------|-------------------------:|
+|Gemeinden                                          |                     10786|
+|Gemeindeverbände und verbandsfreie Gemeinden (GVB) |                      4396|
+|Kreise und kreisfreie Städte (Kreise)              |                       400|
+|Raumordnungsregionen (ROR)                         |                        96|
+|NUTS-2                                             |                        38|
+
+

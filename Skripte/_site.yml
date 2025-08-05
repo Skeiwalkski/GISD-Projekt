@@ -1,0 +1,34 @@
+name: "GISD - German Index of Social Deprivation - Dokumentation und erweiterte Analysen"
+output_dir: "../Website" # Deployment-Ordner für Github Pages
+output:
+  bookdown::html_document2: # HTML-Dokument über Bookdown-Paket
+    includes:
+      in_header: "web-assets/favicon.html" # Browser-Icon (RKI-Logo)
+    theme:
+      version: 5            # Bootstrap 5 über bslib-Paket
+      bootswatch: litera    # Schema von Bootswatch (https://bootswatch.com/litera/)
+      primary: "#005EB7"    # RKI-Blau als Primärfarbe
+    highlight: pygments   # Syntax-Highlighting Farbschema
+    css: "web-assets/styles.css" # CSS-Anpassungen (Scrollbare Codebox, etc.)
+
+navbar:
+  title: "GISD"
+
+  right:
+    - text: "Start"
+      href: index.html # Homepage
+
+    - text: "Generierung"
+      href: generate.html
+
+    - text: "Analysen"
+      menu:
+      
+        - text: "Faktorenanalyse"
+          href: check_faktorenanalyse.html
+          
+        - text: "Ausreißer in Teilscores"
+          href: check_ausreisser.html
+
+    - icon: fa-brands fa-github
+      href: https://www.github.com/lolasoliman/gisd-docs

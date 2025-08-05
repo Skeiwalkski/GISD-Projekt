@@ -1,0 +1,27 @@
+|Dimension     |Name des Indikators                         |Indikator                                                                                                 |Regionale Tiefe |Quelle                                                                |
+|:-------------|:-------------------------------------------|:---------------------------------------------------------------------------------------------------------|:---------------|:---------------------------------------------------------------------|
+|Bildung       |Beschäftigte mit (Fach-)Hochschulabschluss* |Anteil der SV-Beschäftigten am Wohnort mit akademischem Abschluss an den SV-Beschäftigten am Wohnort in % |Kreis           |Statistik der Bundesagentur für Arbeit                                |
+|Bildung       |Beschäftigte ohne Abschluss*                |Anteil der SV-Beschäftigten am Wohnort ohne Berufsabschluss an den SV-Beschäftigten am Wohnort in %       |Kreis           |Statistik der Bundesagentur für Arbeit                                |
+|Bildung       |Schulabgänger:innen ohne Abschluss          |Anteil der Schulabgänger:innen ohne Hauptschulabschluss an den Schulabgänger:innen in %                   |Kreis           |Statistik der allgemeinbildenden Schulen des Bundes und der Länder    |
+|Beschäftigung |Arbeitslosigkeit                            |Anteil der Arbeitslosen an den Einwohner:innen im erwerbsfähigen Alter                                    |Gemeinde        |Statistik der Bundesagentur für Arbeit                                |
+|Beschäftigung |Beschäftigtenquote                          |SV-Beschäftigte am Wohnort je 100 Einwohner:innen im erwerbsfähigen Alter                                 |Gemeinde***     |Statistik der Bundesagentur für Arbeit                                |
+|Beschäftigung |Bruttolohn und -gehalt                      |Monatlicher Bruttoverdienst der Arbeitnehmer:innen in Euro                                                |Kreis           |Volkswirtschaftliche Gesamtrechnung der Länder                        |
+|Einkommen     |Einkommensteuer**                           |Einkommensteuer in € je Einwohner:in                                                                      |Gemeindeverband |Volkswirtschaftliche Gesamtrechnung der Länder                        |
+|Einkommen     |Haushaltsnettoeinkommen                     |Durchschnittliches Haushaltseinkommen in € je Einwohner:in                                                |Kreis           |Schuldneratlas Deutschland des Verbands der Vereine Creditreform e.V. |
+|Einkommen     |Schuldner:innenquote                        |Private Schuldner:innen je 100 volljährige Einwohner:innen in %                                           |Kreis           |Realsteuervergleich des Bundes und der Länder                         |
+
+Quellen: [INKAR 2024](https://www.inkar.de/), [Statistik der Bundesagentur für Arbeit](https://statistik.arbeitsagentur.de/)
+  
+GVB = Gemeindeverbände und verbandsfreie Gemeinden  
+SV = sozialversicherungspflichtig
+  
+*Datenquelle: Für die Anteile der sozialversicherungspflichtig Beschäftigten ohne Abschluss und mit akademischem Abschluss wurden die Daten für die Jahre 2001 bis 2011 direkt über die [Statistik der Bundesagentur für Arbeit](https://statistik.arbeitsagentur.de/) bezogen. Alle weiteren Daten wurden aus [INKAR 2024](https://www.inkar.de/) bezogen.
+
+**Die Werte für die Einkommensteuer der Jahre 2020 und 2021 wurden direkt vom BBSR bezogen. 
+
+***Für die Beschäftigtenquote standen Werte für die Gemeindeebene erst ab 2001 zur Verfügung. Für die Jahre 1998 bis 2000 wurden den Gemeinden die Werte der Kreisebene zugeordnet.
+
+> [Laufende Raumbeobachtung des BBSR - INKAR, Ausgabe 03/2024. Hrsg.: Bundesinstituts für Bau-, Stadt- und Raumforschung (BBSR), Bonn.](https://www.inkar.de/)
+
+> [Statistik der Bundesagentur für Arbeit (2022) Tabellen, Beschäftigte nach Berufen (KldB 2010) (Quartalszahlen), Nürnberg.](https://statistik.arbeitsagentur.de/DE/Navigation/Statistiken/Fachstatistiken/Fachstatistiken-Nav.html)
+
